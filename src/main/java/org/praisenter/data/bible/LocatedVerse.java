@@ -63,10 +63,10 @@ public final class LocatedVerse {
 	 * @param verseNumber the verse number
 	 * @return boolean
 	 */
-	public boolean isSameLocation(int bookNumber, int chapterNumber, int verseNumber) {
+	public boolean isSameLocation(int bookNumber, int chapterNumber, String verseNumber) {
 		if (this.book != null && this.book.getNumber() == bookNumber &&
 			this.chapter != null && this.chapter.getNumber() == chapterNumber &&
-			this.verse != null && this.verse.getNumber() == verseNumber) {
+			this.verse != null && this.verse.getNumber().equalsIgnoreCase(verseNumber)) {
 			return true;
 		}
 		return false;

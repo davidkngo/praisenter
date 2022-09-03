@@ -815,7 +815,7 @@ public final class GlobalContext {
 		bible.setLanguage(Locale.getDefault().toLanguageTag());
 		Book book = new Book(1, Translations.get("action.new.bible.book"));
 		Chapter chapter = new Chapter(1);
-		Verse verse = new Verse(1, Translations.get("action.new.bible.verse"));
+		Verse verse = new Verse(String.valueOf(1), Translations.get("action.new.bible.verse"));
 		bible.getBooks().add(book);
 		book.getChapters().add(chapter);
 		chapter.getVerses().add(verse);

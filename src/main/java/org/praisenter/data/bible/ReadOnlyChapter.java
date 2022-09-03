@@ -12,5 +12,5 @@ public interface ReadOnlyChapter extends Copyable {
 	
 	public ObservableList<? extends ReadOnlyVerse> getVersesUnmodifiable();
 	
-	public Verse getVerse(int verse);
+	public Verse getVerse(String verse);
 }

@@ -387,7 +387,7 @@ public final class BibleSearchPane extends VBox {
 			// get the details
 			int bookNumber = document.getField(Bible.FIELD_BOOK_NUMBER).numericValue().intValue();
 			int chapterNumber = document.getField(Bible.FIELD_VERSE_CHAPTER).numericValue().intValue();
-			int verseNumber = document.getField(Bible.FIELD_VERSE_NUMBER).numericValue().intValue();
+			String verseNumber = document.getField(Bible.FIELD_VERSE_NUMBER).stringValue();
 			
 			LocatedVerse verse = null;
 			if (bible != null) {

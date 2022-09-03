@@ -310,11 +310,11 @@ final class OpenSongBibleFormatProvider implements DataFormatProvider<Bible> {
 					LOGGER.warn(warning);
 					// just duplicate the verse content for each
 					for (int i = this.number; i <= this.verseTo; i++) {
-						this.chapter.getVerses().add(new Verse(i, this.dataBuilder.toString().trim()));
+						this.chapter.getVerses().add(new Verse(String.valueOf(i), this.dataBuilder.toString().trim()));
 					}
 				} else {
 					// add as normal
-					this.chapter.getVerses().add(new Verse(this.number, this.dataBuilder.toString().trim()));
+					this.chapter.getVerses().add(new Verse(String.valueOf(this.number), this.dataBuilder.toString().trim()));
 				}
 				
 			}

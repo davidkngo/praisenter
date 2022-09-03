@@ -54,7 +54,7 @@ final class BibleTreeCell extends TreeCell<Object> {
 			} else if (data instanceof Verse) {
 				Verse verse = (Verse)data;
 				textProperty().bind(verse.textProperty());
-				this.graphic.textProperty().bind(verse.numberProperty().asString());
+				this.graphic.textProperty().bind(verse.numberProperty());
 				this.setGraphic(this.graphic);
 			}
 		}

@@ -244,13 +244,13 @@ public final class Bible implements ReadOnlyBible, Indexable, Persistable, Copya
 	 * @return {@link LocatedVerse}
 	 */
 	@Override
-	public LocatedVerse getVerse(int bookNumber, int chapterNumber, int verseNumber) {
+	public LocatedVerse getVerse(int bookNumber, int chapterNumber, String verseNumber) {
 		for (Book book : this.books) {
 			if (bookNumber == book.getNumber()) {
 				for (Chapter chapter : book.getChapters()) {
 					if (chapterNumber == chapter.getNumber()) {
 						for (Verse verse : chapter.getVerses()) {
-							if (verse.getNumber() == verseNumber) {
+							if (verse.getNumber().equalsIgnoreCase(verseNumber)) {
 								return new LocatedVerse(this, book, chapter, verse);
 							}
 						}
@@ -275,14 +275,14 @@ public final class Bible implements ReadOnlyBible, Indexable, Persistable, Copya
 	 * @return {@link LocatedVerse}
 	 */
 	@Override
-	public LocatedVerse getNextVerse(int bookNumber, int chapterNumber, int verseNumber) {
+	public LocatedVerse getNextVerse(int bookNumber, int chapterNumber, String verseNumber) {
 		boolean found = false;
 		for (Book book : this.books) {
 			if (found || book.getNumber() == bookNumber) {
 				for (Chapter chapter : book.getChapters()) {
 					if (found || chapter.getNumber() == chapterNumber) {
 						for (Verse verse : chapter.getVerses()) {
-							if (!found && verse.getNumber() == verseNumber) {
+							if (!found && verse.getNumber().equalsIgnoreCase(verseNumber)) {
 								// we've found the verse
 								// so try to go to the next one
 								found = true;
@@ -313,7 +313,7 @@ public final class Bible implements ReadOnlyBible, Indexable, Persistable, Copya
 	 * @return {@link LocatedVerse}
 	 */
 	@Override
-	public LocatedVerse getPreviousVerse(int bookNumber, int chapterNumber, int verseNumber) {
+	public LocatedVerse getPreviousVerse(int bookNumber, int chapterNumber, String verseNumber) {
 		boolean found = false;
 		for (int i = this.books.size() - 1; i >= 0; i--) {
 			Book book = this.books.get(i);
@@ -325,7 +325,7 @@ public final class Bible implements ReadOnlyBible, Indexable, Persistable, Copya
 						List<Verse> verses = chapter.getVerses();
 						for (int k = verses.size() - 1; k >= 0; k--) {
 							Verse verse = verses.get(k);
-							if (!found && verse.getNumber() == verseNumber) {
+							if (!found && verse.getNumber().equalsIgnoreCase(verseNumber)) {
 								// we've found the verse
 								// so try to go to the next one
 								found = true;
@@ -360,7 +360,7 @@ public final class Bible implements ReadOnlyBible, Indexable, Persistable, Copya
 	 * @return {@link LocatedVerseTriplet}
 	 */
 	@Override
-	public LocatedVerseTriplet getTriplet(int bookNumber, int chapterNumber, int verseNumber) {
+	public LocatedVerseTriplet getTriplet(int bookNumber, int chapterNumber, String verseNumber) {
 		LocatedVerse current = null;
 		LocatedVerse next = null;
 		boolean start = false;
@@ -369,7 +369,7 @@ public final class Bible implements ReadOnlyBible, Indexable, Persistable, Copya
 				for (Chapter chapter : book.getChapters()) {
 					if (start || chapter.getNumber() == chapterNumber) {
 						for (Verse verse : chapter.getVerses()) {
-							if (!start && verse.getNumber() == verseNumber) {
+							if (!start && verse.getNumber().equalsIgnoreCase(verseNumber)) {
 								// we've found the verse
 								// so try to go to the next one
 								current = new LocatedVerse(this, book, chapter, verse);
@@ -410,7 +410,7 @@ public final class Bible implements ReadOnlyBible, Indexable, Persistable, Copya
 	 * @return {@link LocatedVerseTriplet}
 	 */
 	@Override
-	public LocatedVerseTriplet getNextTriplet(int bookNumber, int chapterNumber, int verseNumber) {
+	public LocatedVerseTriplet getNextTriplet(int bookNumber, int chapterNumber, String verseNumber) {
 		LocatedVerse previous = null;
 		LocatedVerse current = null;
 		LocatedVerse next = null;
@@ -420,7 +420,7 @@ public final class Bible implements ReadOnlyBible, Indexable, Persistable, Copya
 				for (Chapter chapter : book.getChapters()) {
 					if (start || chapter.getNumber() == chapterNumber) {
 						for (Verse verse : chapter.getVerses()) {
-							if (!start && verse.getNumber() == verseNumber) {
+							if (!start && verse.getNumber().equalsIgnoreCase(verseNumber)) {
 								// we've found the verse
 								// so try to go to the next one
 								previous = new LocatedVerse(this, book, chapter, verse);
@@ -461,7 +461,7 @@ public final class Bible implements ReadOnlyBible, Indexable, Persistable, Copya
 	 * @return {@link LocatedVerseTriplet}
 	 */
 	@Override
-	public LocatedVerseTriplet getPreviousTriplet(int bookNumber, int chapterNumber, int verseNumber) {
+	public LocatedVerseTriplet getPreviousTriplet(int bookNumber, int chapterNumber, String verseNumber) {
 		LocatedVerse previous = null;
 		LocatedVerse current = null;
 		LocatedVerse next = null;
@@ -476,7 +476,7 @@ public final class Bible implements ReadOnlyBible, Indexable, Persistable, Copya
 						List<Verse> verses = chapter.getVerses();
 						for (int k = verses.size() - 1; k >= 0; k--) {
 							Verse verse = verses.get(k);
-							if (!start && verse.getNumber() == verseNumber) {
+							if (!start && verse.getNumber().equalsIgnoreCase(verseNumber)) {
 								// we've found the verse
 								// so try to go to the next one
 								next = new LocatedVerse(this, book, chapter, verse);

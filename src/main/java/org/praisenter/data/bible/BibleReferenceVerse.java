@@ -62,7 +62,7 @@ public final class BibleReferenceVerse implements Comparable<BibleReferenceVerse
 	
 	/** The verse number */
 	@JsonProperty
-	private final int verseNumber;
+	private final String verseNumber;
 	
 	/** The verse text */
 	@JsonProperty
@@ -78,7 +78,7 @@ public final class BibleReferenceVerse implements Comparable<BibleReferenceVerse
 		this.bookName = null;
 		this.bookNumber = NOT_SET;
 		this.chapterNumber = NOT_SET;
-		this.verseNumber = NOT_SET;
+		this.verseNumber = null;
 		this.text = null;
 	}
 	
@@ -92,7 +92,7 @@ public final class BibleReferenceVerse implements Comparable<BibleReferenceVerse
 	 * @param verseNumber the verse number
 	 * @param text the verse text
 	 */
-	public BibleReferenceVerse(UUID bibleId, String bibleName, String bookName, int bookNumber, int chapterNumber, int verseNumber, String text) {
+	public BibleReferenceVerse(UUID bibleId, String bibleName, String bookName, int bookNumber, int chapterNumber, String verseNumber, String text) {
 		this.bibleId = bibleId;
 		this.bibleName = bibleName;
 		this.bookName = bookName;
@@ -116,7 +116,7 @@ public final class BibleReferenceVerse implements Comparable<BibleReferenceVerse
 			if (diff == 0) {
 				diff = this.chapterNumber - o.chapterNumber;
 				if (diff == 0) {
-					return this.verseNumber - o.verseNumber;
+					return this.verseNumber.compareTo(o.verseNumber);
 				}
 			}
 		}
@@ -196,7 +196,7 @@ public final class BibleReferenceVerse implements Comparable<BibleReferenceVerse
 	 * Returns the verse number.
 	 * @return short
 	 */
-	public int getVerseNumber() {
+	public String getVerseNumber() {
 		return this.verseNumber;
 	}
 	

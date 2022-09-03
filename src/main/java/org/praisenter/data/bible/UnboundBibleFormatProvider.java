@@ -291,7 +291,7 @@ final class UnboundBibleFormatProvider implements DataFormatProvider<Bible> {
 						}
 						
 						if (chapter != null) {
-							chapter.getVerses().add(new Verse(verse, text));
+							chapter.getVerses().add(new Verse(String.valueOf(verse), text));
 						}
 					} catch (NumberFormatException e) {
 						LOGGER.error("Failed to parse chapter, verse or order as integers at line " + i + " of " + fileName);

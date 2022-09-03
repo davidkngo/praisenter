@@ -60,6 +60,6 @@ abstract class AbstractBulkEditConverter<T> implements BulkEditConverter<T> {
 		String num = line.substring(0, index).trim();
 		String text = line.substring(index).trim();
 		
-		return new Verse(Integer.parseInt(num), text);
+		return new Verse(num, text);
 	}
 }

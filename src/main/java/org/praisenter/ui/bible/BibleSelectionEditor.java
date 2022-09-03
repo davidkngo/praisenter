@@ -68,8 +68,8 @@ public final class BibleSelectionEditor extends VBox implements DocumentSelectio
 	
 	private final ObjectProperty<Verse> selectedVerse;
 	private final StringProperty verseText;
-	private final IntegerProperty verseNumber;
-	private final ObjectProperty<Integer> verseNumber2;
+	private final StringProperty verseNumber;
+	private final StringProperty verseNumber2;
 	
 	public BibleSelectionEditor(GlobalContext context) {
 		this.getStyleClass().add(SELECTION_EDITOR_CSS);
@@ -163,9 +163,9 @@ public final class BibleSelectionEditor extends VBox implements DocumentSelectio
 			}
 		});
 		
-		this.verseNumber = new SimpleIntegerProperty();
+		this.verseNumber = new SimpleStringProperty();
 		this.verseText = new SimpleStringProperty();
-		this.verseNumber2 = this.verseNumber.asObject();
+		this.verseNumber2 = this.verseNumber;
 		
 		this.selectedVerse = new SimpleObjectProperty<>();
 		this.selectedVerse.addListener((obs, ov, nv) -> {
@@ -174,7 +174,7 @@ public final class BibleSelectionEditor extends VBox implements DocumentSelectio
 				this.verseNumber.unbindBidirectional(ov.numberProperty());
 				
 				this.verseText.set(null);
-				this.verseNumber.set(0);
+				this.verseNumber.set(null);
 			}
 			if (nv != null) {
 				this.verseText.bindBidirectional(nv.textProperty());
@@ -239,7 +239,7 @@ public final class BibleSelectionEditor extends VBox implements DocumentSelectio
 		txtVerseText.textProperty().bindBidirectional(this.verseText);
 		txtVerseText.setWrapText(true);
 		
-		Spinner<Integer> spnVerseNumber = new Spinner<>(1, Integer.MAX_VALUE, 1);
+		Spinner<String> spnVerseNumber = new Spinner<>(1, Integer.MAX_VALUE, 1);
 		spnVerseNumber.setEditable(true);
 		spnVerseNumber.getValueFactory().valueProperty().bindBidirectional(this.verseNumber2);
 		spnVerseNumber.setMaxWidth(Double.MAX_VALUE);

@@ -24,12 +24,12 @@ public interface ReadOnlyBible extends Indexable, Persistable, Copyable, Identif
 	
 	public int getVerseCount();
 	public int getBookCount();
-	public LocatedVerse getVerse(int bookNumber, int chapterNumber, int verseNumber);
-	public LocatedVerse getNextVerse(int bookNumber, int chapterNumber, int verseNumber);
-	public LocatedVerse getPreviousVerse(int bookNumber, int chapterNumber, int verseNumber);
-	public LocatedVerseTriplet getTriplet(int bookNumber, int chapterNumber, int verseNumber);
-	public LocatedVerseTriplet getNextTriplet(int bookNumber, int chapterNumber, int verseNumber);
-	public LocatedVerseTriplet getPreviousTriplet(int bookNumber, int chapterNumber, int verseNumber);
+	public LocatedVerse getVerse(int bookNumber, int chapterNumber, String verseNumber);
+	public LocatedVerse getNextVerse(int bookNumber, int chapterNumber, String verseNumber);
+	public LocatedVerse getPreviousVerse(int bookNumber, int chapterNumber, String verseNumber);
+	public LocatedVerseTriplet getTriplet(int bookNumber, int chapterNumber, String verseNumber);
+	public LocatedVerseTriplet getNextTriplet(int bookNumber, int chapterNumber, String verseNumber);
+	public LocatedVerseTriplet getPreviousTriplet(int bookNumber, int chapterNumber, String verseNumber);
 	public LocatedVerseTriplet getMatchingTriplet(LocatedVerseTriplet triplet);
 	public Book getLastBook();
 	public int getMaxBookNumber();

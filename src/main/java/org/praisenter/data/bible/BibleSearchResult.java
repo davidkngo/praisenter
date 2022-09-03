@@ -44,7 +44,7 @@ public final class BibleSearchResult implements Comparable<BibleSearchResult> {
 			if (diff == 0) {
 				diff = this.chapter.getNumber() - o.chapter.getNumber();
 				if (diff == 0) {
-					diff = this.verse.getNumber() - o.verse.getNumber();
+					diff = this.verse.getNumber().compareTo(o.verse.getNumber());
 				}
 			}
 		}

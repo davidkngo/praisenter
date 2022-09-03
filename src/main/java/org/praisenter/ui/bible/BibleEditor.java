@@ -424,7 +424,7 @@ public final class BibleEditor extends BorderPane implements DocumentEditor<Bibl
 			case NEW_VERSE:
 				if (chapter != null) {
 					int n = chapter.getMaxVerseNumber();
-					chapter.getVerses().add(new Verse(n, Translations.get("action.new.bible.verse")));
+					chapter.getVerses().add(new Verse(String.valueOf(n), Translations.get("action.new.bible.verse")));
 				}
 				break;
 			default:
